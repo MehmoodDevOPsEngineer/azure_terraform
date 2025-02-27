@@ -1,10 +1,11 @@
 provider "azurerm" {
-  client_id       = var.azure_client_id
-  client_secret   = var.azure_client_secret
-  subscription_id = var.azure_subscription_id
-  tenant_id       = var.azure_tenant_id
+  client_id       = "5f673f24-669f-4bd9-9a0b-3f96a7342654"  # appId (Client ID)
+  client_secret   = "rOa8Q~xXEjVr2Pcf_gHf4md1Hia0S8kruXqwLcJv"  # password (Client Secret)
+  subscription_id = "eb790b59-ab45-4869-82c5-7b06dcfd6184"  # Replace with your Azure Subscription ID
+  tenant_id       = "91a8fddf-7ed5-4867-b541-e85a402cf168"  # tenant
   features {}
 }
+
 
 
 # Step 1: Creating  a Resource Group in which our resources will be creating
