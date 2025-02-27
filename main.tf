@@ -1,6 +1,6 @@
 # Azure Provider Configuration
 provider "azurerm" {
-  features = {}
+  features {}  # Corrected provider configuration
 }
 
 # Resource Group to hold all resources
@@ -127,4 +127,36 @@ resource "azurerm_key_vault_secret" "pfm_db_connection_string" {
   key_vault_id = azurerm_key_vault.kv_1.id
 }
 
-# Azure Key Vault 2 Setup (for additional purpose
+# Azure Key Vault 2 Setup (for additional purpose)
+resource "azurerm_key_vault" "kv_2" {
+  name                = "example-kv-2"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  tenant_id           = "91a8fddf-7ed5-4867-b541-e85a402cf168"
+  sku_name            = "standard"
+}
+
+# Outputs for database connection strings (optional)
+output "platform_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=platformdb;User ID=OwnerPlatform;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
+
+output "crm_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=crmdb;User ID=OwnerCRM;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
+
+output "cfo_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=cfodb;User ID=OwnerCFO;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
+
+output "background_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=backgrounddb;User ID=OwnerBackground;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
+
+output "pfm_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=pfmdb;User ID=OwnerPFM;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
+
+output "logs_db_connection_string" {
+  value = "Server=tcp:${azurerm_mssql_server.server.fully_qualified_domain_name},1433;Database=logsdb;User ID=OwnerLogs;Password=password123;Encrypt=true;TrustServerCertificate=false;Connection Timeout=30;"
+}
