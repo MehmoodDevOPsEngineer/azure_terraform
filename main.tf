@@ -19,11 +19,13 @@ variable "client_secret" {
 }
 
 
-#Providing the azure account on which our resources will be created
 provider "azurerm" {
   features {}
-  subscription_id = "eb790b59-ab45-4869-82c5-7b06dcfd6184"  # Your Subscription ID
-  tenant_id = "91a8fddf-7ed5-4867-b541-e85a402cf168"
+
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
 
 # Step 1: Creating  a Resource Group in which our resources will be creating
