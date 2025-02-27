@@ -4,11 +4,7 @@ provider "azurerm" {
   subscription_id = "eb790b59-ab45-4869-82c5-7b06dcfd6184"  # Replace with your Azure Subscription ID
   tenant_id       = "91a8fddf-7ed5-4867-b541-e85a402cf168"  # tenant
   features {}
-  # Optional: Increase timeout settings
-  retry_provider_registration = true
-  retries = 5
-  max_retries = 5
-  retry_delay = 30
+
 
 }
 
